@@ -1,0 +1,50 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+.scocca-contagiri{
+    width: 500px;
+    height: 500px;
+    border: 3px solid rgb(169, 169, 169);
+    border-radius: 50%;
+    position: relative;
+    background-color: #231B12 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); */
+}
+.container .scocca-contagiri .contagiri{
+ width: calc(100% - 5%);
+ aspect-ratio: 1/1;
+ border-radius: 50%;
+ border: 10px solid black;
+ transform: rotate(180deg);
+ background: #30210D;
+background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1) 44%, rgba(201, 133, 1, 1) 100%);
+}
+.container .scocca-contagiri .contagiri span{
+    position: absolute;
+    transform: rotate(calc(var(--index) * 27.69230769deg));
+    inset: 10px;
+    text-align: center;
+}
+.container .scocca-contagiri .contagiri span p{
+    color: #C0B995;
+    font-size: 70px;
+    rotate: 180deg;
+    transform: rotate(calc(var(--index) * -27.69230769deg));
+}
+.container .scocca-contagiri .contagiri span:nth-last-child(-n+2){
+    visibility: hidden;
+}
