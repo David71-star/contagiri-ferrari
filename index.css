@@ -3,8 +3,17 @@
     padding: 0%;
     box-sizing: border-box;
 }
+@font-face {
+  font-family: 'Eurostile Extended';
+  src: url('./fonts/Eurostar\ Regular\ Extended\ Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Eurostile Extended', sans-serif;
+}
 
 .container{
+    position: relative;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -24,27 +33,143 @@
     align-items: center;
     /* box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); */
 }
+.bar{
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.bar span{
+    position: absolute;
+    transform: rotate(calc(var(--index) * 5deg));
+    inset: 14px;
+    text-align: center;
+    z-index: 2;
+}
+
+.bar span p{
+    display: inline-block;
+    width: 1px;
+    height: 7px;
+    background-color: black;
+}
+.bar span:nth-of-type(71) p,
+.bar span:nth-of-type(1) p{
+    background-color: black!important;
+    width: 1px!important;
+    height: 7px!important;
+    border: none!important;
+}
+.bar span:nth-child(5n +1) p,
+.bar span:nth-of-type(72) p{
+    background-color: #231B12;
+    height: 20px;
+    width: 5px;
+    border-bottom: silver 3px solid;
+    border-top: silver 3px solid;
+    border-inline: black 1px solid;
+}
 .container .scocca-contagiri .contagiri{
+position: absolute;
  width: calc(100% - 5%);
  aspect-ratio: 1/1;
  border-radius: 50%;
  border: 10px solid black;
  transform: rotate(180deg);
- background: #30210D;
+ background: rgba(201, 133, 1, 1);
+background: linear-gradient(147deg, rgba(201, 133, 1, 1) 15%, rgba(66, 45, 12, 1) 50%, rgba(48, 33, 13, 1) 100%);
+ /* background: #30210D;
 background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1) 44%, rgba(201, 133, 1, 1) 100%);
+} */
 }
+
 .container .scocca-contagiri .contagiri span{
     position: absolute;
-    transform: rotate(calc(var(--index) * 27.69230769deg));
-    inset: 10px;
+    transform: rotate(calc(var(--index) * 25.7142deg));
+    inset: 25px;
     text-align: center;
 }
 .container .scocca-contagiri .contagiri span p{
     color: #C0B995;
-    font-size: 70px;
+    font-size: 52.5px;
+    font-weight: bolder;
     rotate: 180deg;
-    transform: rotate(calc(var(--index) * -27.69230769deg));
+    transform: rotate(calc(var(--index) * -25.7142deg));
 }
 .container .scocca-contagiri .contagiri span:nth-last-child(-n+2){
     visibility: hidden;
 }
+.container .scocca-contagiri .contagiri span:nth-last-child(-n+4) p{
+    color: red;
+}
+.contagiri-interno{
+    position: absolute;
+    width: calc(100% - 47.5%);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 1px solid rgba(150, 150, 150, 0.379);
+    background: transparent;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+.contagiri-interno .line{
+    position: absolute;
+    width: calc(100% - var(--index) * 9px);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 0.5px solid rgba(255, 255, 255, 0.712);
+    background-color: transparent;
+    inset: 0;
+    margin: auto;
+}
+.container-interno-due{
+    position: relative;
+    width: calc(100% - 40px - 47.5%);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 1px rgba(150, 150, 150, 0.379) solid;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 20px;
+    /* box-shadow: 0 0 30px 1px black; */
+}
+.container-interno-due::before{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    box-shadow: black 0 0 5px 1px;
+    inset: 0;
+    margin: auto;
+}
+.container-interno-due::after{
+    content: '';
+    position: absolute;
+    transform: translateY(2px);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: black;
+    inset: 0;
+    margin: auto;
+}
+.container-interno-due img{
+    width: 40px;
+}
+
+.container-interno-due p{
+    color: #C0B995;
+    font-weight: bold;
+    font-size: 11.25px;
+}
+.container-interno-due p span{
+    color: #C0B995;
+    font-weight: bold;
+    font-size: medium;
+}
+/
+
