@@ -46,6 +46,7 @@ let motoreAcceso = false;
 let premutoW = false;
 let ultimaChiamata = null;
 let animationFrameId = null;
+const startEngine = new Audio('./audio/')
 
 // ACCENSIONE/SPEGNIMENTO MOTORE
 document.addEventListener('keyup', (e) => {
