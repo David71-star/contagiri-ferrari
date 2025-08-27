@@ -46,7 +46,8 @@ let motoreAcceso = false;
 let premutoW = false;
 let ultimaChiamata = null;
 let animationFrameId = null;
-const startEngine = new Audio('./audio/')
+const audio = new Audio("audio/ferrariStart.m4a");
+
 
 // ACCENSIONE/SPEGNIMENTO MOTORE
 document.addEventListener('keyup', (e) => {
@@ -54,6 +55,8 @@ document.addEventListener('keyup', (e) => {
     // ACCENSIONE
     motoreAcceso = true;
     rotazioneMinima = 30;
+    audio.play()
+    
 
     if (rotazione < rotazioneMinima) {
       rotazione = rotazioneMinima;
@@ -64,7 +67,7 @@ document.addEventListener('keyup', (e) => {
         rotazione = rotazioneMinima;
         freccia.style.transition = 'transform 0.5s ease-in';
         freccia.style.transform = `rotate(${rotazione}deg)`;
-      }, 1800);
+      }, 2500);
     }
 
     startAnimazione(); // Avvia loop dinamico
@@ -72,9 +75,10 @@ document.addEventListener('keyup', (e) => {
   } else if (motoreAcceso && e.key.toLowerCase() === 'p') {
     // SPEGNIMENTO
     motoreAcceso = false;
+    audio.pause()
+    audio.currentTime = 0
     premutoW = false;
     stopAnimazione(); // Ferma loop dinamico
-
     rotazione = 0;
     freccia.style.transition = 'transform 0.5s ease-out';
     freccia.style.transform = `rotate(${rotazione}deg)`;
