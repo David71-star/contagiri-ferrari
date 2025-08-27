@@ -46,7 +46,9 @@ let motoreAcceso = false;
 let premutoW = false;
 let ultimaChiamata = null;
 let animationFrameId = null;
-const audio = new Audio("audio/ferrariStart.m4a");
+const inizioAudio = new Audio("audio/ferrariStart.m4a");
+const fineaudio = new Audio("audio/ferrariStartFineAudio.m4a");
+
 
 
 // ACCENSIONE/SPEGNIMENTO MOTORE
@@ -55,8 +57,8 @@ document.addEventListener('keyup', (e) => {
     // ACCENSIONE
     motoreAcceso = true;
     rotazioneMinima = 30;
-    audio.play()
-    
+    fineaudio.play()
+
 
     if (rotazione < rotazioneMinima) {
       rotazione = rotazioneMinima;
