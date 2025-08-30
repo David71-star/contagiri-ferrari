@@ -14,7 +14,7 @@ body {
 
 .container{
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: space-around;
@@ -25,6 +25,9 @@ body {
 .container h1{
     color: white
 
+}
+.container h3{
+    color: white;
 }
 .scocca-contagiri{
     width: 500px;
@@ -147,16 +150,16 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
 .container .scocca-contagiri .contagiri span{
     position: absolute;
     transform: rotate(calc(var(--index) * 25.7142deg));
-    inset: 15px;
+    inset: 9px;
     text-align: center;
 }
 .container .scocca-contagiri .contagiri span:nth-last-of-type(-n+3) p{
-    font-size: 47.2px;
-    margin-top: 15px;
+    margin-top: -5px;
+    margin-left: 65px;
 }
 .container .scocca-contagiri .contagiri span p{
     color: #C0B995;
-    font-size: 55px;
+    font-size: 47.5px;
     font-weight: bolder;
     rotate: 180deg;
     transform: rotate(calc(var(--index) * -25.7142deg));
@@ -169,7 +172,7 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
 }
 .contagiri-interno{
     position: absolute;
-    width: calc(100% - 47.5%);
+    width: calc(100% - 35%);
     aspect-ratio: 1/1;
     border-radius: 50%;
     border: 1px solid rgba(150, 150, 150, 0.379);
@@ -211,7 +214,7 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     border-right: 1.5px solid transparent;
     transform: rotate(80.25deg);
     background-color: transparent;
-    inset: 0px;
+    inset: -0px;
     top: 0px;
     left: -1.5px;
     margin: auto;
@@ -241,11 +244,11 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     height: 15px;
     background-color: #C0B995;
     text-align: center;
-    top: 108px;
+    top: 139px;
 }
 .container-interno-due{
     position: relative;
-    width: calc(100% - 50px - 47.5%);
+    width: calc(100% - 50px - 35%);
     aspect-ratio: 1/1;
     border-radius: 50%;
     border: 1px rgba(150, 150, 150, 0.379) solid;
@@ -259,8 +262,8 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
 .container-interno-due::before{
     content: '';
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     background-color: rgb(20, 20, 20);
     box-shadow: #412C0C 0 0 10px 10px;
@@ -271,30 +274,50 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     content: '';
     position: absolute;
     transform: translateY(2px);
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: black;
     inset: 0;
     margin: auto;
 }
 .container-interno-due img{
-    width: 40px;
+    width: 47px;
+    margin-left: 7.5px;
+}
+.scocca-contagiri #shift{
+    width: 165px;
+    position: absolute;
+    top: 53.5%;
+    left: 56%;
+}
+.shift-detail h1{
+    font-size: 0px;
+    position: absolute;
+    top: calc(50% + 40px);
+    left: calc(50% + 80px);
+    visibility: hidden;
+    color: #C0B995;
+    text-shadow: 0 0 15px 3px #C0B995;
+    transition: 0.3s linear;
+    z-index: 1;
 }
 .container-interno-due p{
     color: #C0B995;
     font-weight: bold;
-    font-size: 11.25px;
+    font-size: 13px;
+    padding-bottom: 15px;
 }
 .container-interno-due p span{
     color: #C0B995;
     font-weight: bold;
-    font-size: medium;
+    font-size: 18px;
 }
 .freccia{
     position: absolute;
     width: 10px;
-    height: 22.5%;
+    height: 35%;
+    top: 32.5%;
     background-color: black;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -320,11 +343,9 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     content: '';
     position: absolute;
     width: 6px;
-    height: 22%;
+    height: 18%;
     background-color: red;
-    /* background: #FF3431;
-background: linear-gradient(0deg, rgba(255, 52, 49, 1) 70%, rgba(252, 93, 63, 1) 100%); */
-    top: 392px;
+    top: 402px;
     left: 50%;
     transform: translate(-50%, -50%) rotate(180deg);
     z-index: 4;
@@ -348,9 +369,9 @@ background: linear-gradient(0deg, rgba(255, 52, 49, 1) 70%, rgba(252, 93, 63, 1)
     content: '';
     position: absolute;
     width: 100%;
-    height: 30%;
+    height: 20%;
     background-color: #b7a092;
-    top: 111px;
+    top: 160px;
     left: 50%;
     transform: translateX(-50%);
     box-shadow: #412C0C 0 0 10px 1px;
@@ -358,9 +379,11 @@ background: linear-gradient(0deg, rgba(255, 52, 49, 1) 70%, rgba(252, 93, 63, 1)
 .freccia-cima{
     position: absolute;
     width: 16px;
-    height: 120px;
+    height: 100px;
     background-color: #b7a092;
-    top: 336px;
+    /* background-color: red; */
+
+    top: 356px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
@@ -374,7 +397,7 @@ background: linear-gradient(0deg, rgba(255, 52, 49, 1) 70%, rgba(252, 93, 63, 1)
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 15px solid #b7a092;
-    top: 127px;
+    top: 107px;
     left: 50%;
     transform: translate(-50%, -50%) rotate(180deg);
     z-index: 3;    
@@ -395,13 +418,18 @@ background: linear-gradient(0deg, rgba(255, 52, 49, 1) 70%, rgba(252, 93, 63, 1)
 .separatore{
     position: absolute;
     width: 0.5px;
-    height: calc(56% + 1px);
-    background-color: rgba(255, 255, 255, 0.235);
-    top: 192px;
+    height: calc(62%);
+    background-color: rgba(255, 255, 255, 0.196);
+    top: 161px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 6;
     box-shadow: 3.5px -1px 3.5px 1px #4343438f;
+}
+.visibile{
+    visibility: visible!important;
+    transition: 0.3s linear;
+    font-size: 60px!important;
 }
 
 

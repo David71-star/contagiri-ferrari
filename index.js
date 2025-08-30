@@ -1,6 +1,8 @@
 const contagiri = document.querySelector('.contagiri');
 const scocca = document.querySelector('.bar');
 const interno = document.querySelector('.contagiri-interno');
+const shift = document.getElementById('gear');
+const infoShift = document.querySelector('.shift-detail')
 
 
 const numbers = [];
@@ -9,8 +11,19 @@ const line = [];
 const lineSpace = [];
 
 for (let i = 0; i <= 12; i++) {
-    numbers.push(`<span style="--index:${i};"><p>${i}</p></span>`);
+  let display;
+  
+  if (i === 1) {
+    display = 'I';
+  } else if (i === 10) {
+    display = 'I0';
+  } else {
+    display = i;
+  }
+
+  numbers.push(`<span style="--index:${i};"><p>${display}</p></span>`);
 }
+
 console.log(numbers);
 
 contagiri.insertAdjacentHTML('afterbegin', numbers.join(''));
@@ -32,14 +45,18 @@ for (let i = 1; i <= 13; i++) {
 }
 interno.insertAdjacentHTML('afterbegin', lineSpace.join(''));
 
+
+
+
+
 //LOGICA LANCETTA
 
 
 const freccia = document.querySelector('.container-freccia');
 let rotazione = 0;
-const velocitaAvanti = 360;   // gradi/sec
+const velocitaAvanti = 300;   // gradi/sec
 const velocitaIndietro = 100; // gradi/sec
-const rotazioneMassima = 250;
+const rotazioneMassima = 247.5;
 let rotazioneMinima = 0;
 
 let motoreAcceso = false;
@@ -47,7 +64,11 @@ let premutoW = false;
 let ultimaChiamata = null;
 let animationFrameId = null;
 const inizioAudio = new Audio("audio/ferrariStart.m4a");
-const fineaudio = new Audio("audio/ferrariStartFineAudio.m4a");
+const fineAudio = new Audio("audio/ferrariIdle.wav");
+const ferrariOffAudio = new Audio("audio/ferrariEngineOff.m4a");
+const sound = new Audio("audio/ferrariSound1.m4a")
+let audioInterval;
+
 
 
 
@@ -55,15 +76,18 @@ const fineaudio = new Audio("audio/ferrariStartFineAudio.m4a");
 document.addEventListener('keyup', (e) => {
   if (e.key.toLowerCase() === 'p' && !motoreAcceso) {
     // ACCENSIONE
+    shift.classList.add("visibile") 
     motoreAcceso = true;
-    rotazioneMinima = 30;
-    fineaudio.play()
-
+    rotazioneMinima = 25;
+    inizioAudio.play()
+    audioInterval = setInterval(() => {
+      fineAudio.play();
+    }, 500);
 
     if (rotazione < rotazioneMinima) {
       rotazione = rotazioneMinima;
-      freccia.style.transition = 'transform 0.3s ease-in 0.5s';
-      freccia.style.transform = `rotate(${rotazione + 30}deg)`;
+      freccia.style.transition = 'transform 0.2s ease-in 0.7s';
+      freccia.style.transform = `rotate(${rotazione + 50}deg)`;
 
       setTimeout(() => {
         rotazione = rotazioneMinima;
@@ -76,9 +100,14 @@ document.addEventListener('keyup', (e) => {
 
   } else if (motoreAcceso && e.key.toLowerCase() === 'p') {
     // SPEGNIMENTO
+    shift.classList.remove("visibile") 
+    fineAudio.pause();
+    clearInterval(audioInterval)
     motoreAcceso = false;
-    audio.pause()
-    audio.currentTime = 0
+    fineAudio.loop = false;
+    ferrariOffAudio.play()
+    inizioAudio.pause()
+    inizioAudio.currentTime = 0
     premutoW = false;
     stopAnimazione(); // Ferma loop dinamico
     rotazione = 0;
@@ -91,6 +120,7 @@ document.addEventListener('keyup', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key.toLowerCase() === 'w') {
     premutoW = true;
+    
   }
 });
 
@@ -99,6 +129,9 @@ document.addEventListener('keyup', (e) => {
     premutoW = false;
   }
 });
+
+
+
 
 // LOOP DINAMICO
 function aggiornaRotazione(timestamp) {
@@ -122,6 +155,27 @@ function aggiornaRotazione(timestamp) {
     if (aggiorna) {
       freccia.style.transition = 'none';
       freccia.style.transform = `rotate(${rotazione}deg)`;
+      // sound.loop = true;
+// sound.pause(); // avvia subito ma metti in pausa
+
+      let rate = 3.92 * (rotazione / rotazioneMassima); // da 0.5 a 1.5 (o come preferisci)
+  // sound.currentTime = rate;
+  sound.currentTime = rate;
+  if (rotazione > 25) {
+      sound.play()
+      fineAudio.pause()
+
+    }else{
+      sound.pause()
+      fineAudio.play()
+      sound.currentTime = 0;
+    }
+// sound.play();
+// sound.pause()
+console.log(rate);
+
+
+
     }
   }
 
