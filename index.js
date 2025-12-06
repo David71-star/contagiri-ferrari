@@ -4,6 +4,8 @@ const interno = document.querySelector('.contagiri-interno');
 const shift = document.getElementById('gear');
 const textKmh = document.getElementById('speed');
 const kmH = document.querySelector('.display-1 h2');
+const D1 = document.querySelector('.onOffDisplay1');
+const D2 = document.querySelector('.onOffDisplay2');
 const displayTop = document.querySelector('.top')
 const simbolShift = document.getElementById('imgShift')
 const benzina = document.querySelector('.tacche')
@@ -82,6 +84,7 @@ let rotazioneMinima = 0;
 let speed = 0;
 let motoreAcceso = false;
 let premutoW = false;
+let premutoS = false;
 let premutoArrowUp = false
 let premutoArrowDoun = false
 let ultimaChiamata = null;
@@ -101,6 +104,8 @@ let audioInterval;
 document.addEventListener('keyup', (e) => {
   if (e.key.toLowerCase() === 'p' && !motoreAcceso) {
     // ACCENSIONE
+    D1.classList.add("accendi")
+    D2.classList.add("accendi")
     shift.classList.add("visibile-shift")
     kmH.classList.add("visibile-kmH")
     textKmh.classList.add("visibile-kmH")
@@ -128,6 +133,8 @@ document.addEventListener('keyup', (e) => {
 
   } else if (motoreAcceso && e.key.toLowerCase() === 'p') {
     // SPEGNIMENTO
+    D1.classList.remove("accendi")
+    D2.classList.remove("accendi")
     shift.classList.remove("visibile-shift") 
     kmH.classList.remove("visibile-kmH")
     textKmh.classList.remove("visibile-kmH")
@@ -157,6 +164,23 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
   if (e.key.toLowerCase() === 'w') {
     premutoW = false;
+    if (rotazione > 180) {
+      scoppiettioAudio.play()
+      scoppiettioAudio.volume = 0.125;
+    }
+  }
+});
+
+// PRESSIONE S
+document.addEventListener('keydown', (e) => {
+  if (e.key.toLowerCase() === 's') {
+    premutoS = true; 
+  }
+});
+
+document.addEventListener('keyup', (e) => {
+  if (e.key.toLowerCase() === 's') {
+    premutoS = false;
     if (rotazione > 180) {
       scoppiettioAudio.play()
       scoppiettioAudio.volume = 0.125;
@@ -260,6 +284,15 @@ function aggiornaRotazione(timestamp) {
       if (rotazione < rotazioneMinima) rotazione = rotazioneMinima;
       aggiorna = true;
     }
+
+// FRENO
+if (premutoS && currentShiftIndex >= 2) {
+    const indiceFrenata = 5;
+    rotazione -= ((rotazioneMassima - 25) / (velocitaIndietro[currentShiftIndex] / indiceFrenata)) * delta;
+    if (rotazione < rotazioneMinima) rotazione = rotazioneMinima;
+    aggiorna = true;
+}
+
 
     
     if (aggiorna) {

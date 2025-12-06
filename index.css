@@ -461,6 +461,9 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     /* font-size: 30px!important; */
     text-shadow: #C0B995 0 0 15px 3px!important;
 }
+.accendi{
+    visibility: visible!important;
+}
 .scocca{
     width: max-content;
     height: max-content;
@@ -474,32 +477,39 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+.onOffDisplay1, .onOffDisplay2{
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+       display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    position: relative;
+    text-align: center;
+     border-radius: 10px;
+     overflow: hidden;
+
+
+   
+}
+.onOffDisplay2{
+    background-image: url("./assets/sfondoDisplay.jpeg");
+       background-size: cover;
+    background-position: center -90px;
+       
+
+}
 .scocca .display-1,
 .scocca .display-2{
     width: 350px;
     height: 270px;
     color: white;
-    text-align: center;
+     border-radius: 10px;
     background-color: rgb(11, 13, 35);
     border: #000000 2px solid;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: end;
-    position: relative;
-}
-.scocca .display-1{
-    left: 15px;
-}
-.scocca .display-2{
-    right: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-image: url("./assets/sfondoDisplay.jpeg");
-    background-size: cover;
-    background-position: center -90px;
+    
+ 
 }
 .scocca .display-1 p{
     font-size: 25px;
