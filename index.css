@@ -8,14 +8,18 @@
   src: url('./fonts/Eurostar\ Regular\ Extended\ Regular.ttf') format('truetype');
 }
 
-body {
+body, html{
   font-family: 'Eurostile Extended', sans-serif;
+    width: 100%;       
+    height: 100%;
+    overflow: hidden;
+    
 }
 
 .container{
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -29,18 +33,19 @@ body {
 .container h3{
     color: white;
 }
+
 .scocca-contagiri{
     width: 500px;
     height: 500px;
-    border: 3px solid rgb(116, 116, 116);
-    box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, 0.5);
+    position: absolute;
+    border: 4px solid rgb(116, 116, 116);
     border-radius: 50%;
     position: relative;
     background-color: #231B12 ;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); */
+    z-index: 2;
 }
 .bar{
     position: absolute;
@@ -48,6 +53,20 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+}
+.bar::before{
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: transparent;
+    z-index: 1;
+    border: 7px solid transparent;
+    right: 38.5px;
+    top: 109px;
+    rotate: -22.5deg;
+    border-right: 7px solid rgb(142, 20, 20);
 }
 .bar span{
     position: absolute;
@@ -82,16 +101,10 @@ body {
     height: 10px;
     background-color: #C0B995;
 }
-.bar span:nth-of-type(71) p,
-.bar span:nth-of-type(1) p{
-    background-color: #C0B995!important;
-    width: 3px!important;
-    height: 10px!important;
-    border: none!important;
-}
+
 .bar span:nth-child(5n +1) p,
 .bar span:nth-of-type(72) p{
-    background-color: #231B12;
+    background-color: #231B12!important;
     height: 25px;
     width: 6px;
     border-bottom: silver 3px solid;
@@ -99,6 +112,13 @@ body {
     border-inline: black 1px solid;
     box-shadow: 0px 0px 6px black;
     z-index: 2!important;
+}
+.bar span:nth-of-type(71) p,
+.bar span:nth-of-type(1) p{
+    background-color: #C0B995!important;
+    width: 3px!important;
+    height: 10px!important;
+    border: none!important;
 }
 .container .scocca-contagiri .contagiri{
 position: absolute;
@@ -117,12 +137,11 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
 .container .scocca-contagiri .contagiri::before{
     content: '7500';
     color: #C0B995;
-    rotate: 197deg;
+    rotate: 195deg;
     position: absolute;
-    font-size: 10px;
+    font-size: 11px;
     bottom: 20px;
     left: 35%;
-    text-shadow: #C0B995 0 0 5px;
    
 }
 .container .scocca-contagiri .contagiri::after{
@@ -130,28 +149,28 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     color: #C0B995;
     rotate: 220deg;
     position: absolute;
-    font-size: 10px;
-    bottom: 65px;
-    left: 16%;
-    text-shadow: #C0B995 0 0 5px;
+    font-size: 11px;
+    bottom: 64px;
+    left: 17%;
    
 }
 .container .scocca-contagiri::before{
     content: '9500';
-    color: red;
+    color: rgb(142, 20, 20);
     position: absolute;
-    transform: rotate(65deg);
-    font-size: 10px;
-    bottom: 320px;
-    left: 85%;
-    text-shadow: red 0 0 5px;
+    transform: rotate(67deg);
+    font-size: 11px;
+    bottom: 310px;
+    left: 84.5%;
    z-index: 2;
 }
+
 .container .scocca-contagiri .contagiri span{
     position: absolute;
     transform: rotate(calc(var(--index) * 25.7142deg));
     inset: 9px;
     text-align: center;
+    
 }
 .container .scocca-contagiri .contagiri span:nth-last-of-type(-n+3) p{
     margin-top: -5px;
@@ -159,6 +178,7 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
 }
 .container .scocca-contagiri .contagiri span p{
     color: #C0B995;
+    /* font-size: 47.5px; */
     font-size: 47.5px;
     font-weight: bolder;
     rotate: 180deg;
@@ -168,7 +188,8 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     visibility: hidden;
 }
 .container .scocca-contagiri .contagiri span:nth-last-child(-n+4) p{
-    color: red;
+    color: rgb(142, 20, 20);
+    
 }
 .contagiri-interno{
     position: absolute;
@@ -262,8 +283,8 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
 .container-interno-due::before{
     content: '';
     position: absolute;
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: rgb(20, 20, 20);
     box-shadow: #412C0C 0 0 10px 10px;
@@ -274,8 +295,8 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     content: '';
     position: absolute;
     transform: translateY(2px);
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background-color: black;
     inset: 0;
@@ -284,10 +305,12 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
 .container-interno-due img{
     width: 47px;
     margin-left: 7.5px;
+    opacity: 0.6;
 }
 .scocca-contagiri #shift{
     width: 165px;
     position: absolute;
+    filter: contrast(150%);
     top: 53.5%;
     left: 56%;
 }
@@ -297,8 +320,8 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     top: calc(50% + 40px);
     left: calc(50% + 80px);
     visibility: hidden;
-    color: #C0B995;
-    text-shadow: 0 0 15px 3px #C0B995;
+    color: #c3531b;
+    text-shadow: 0 0 3px #c3531b;
     transition: 0.3s linear;
     z-index: 1;
 }
@@ -344,7 +367,7 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     position: absolute;
     width: 6px;
     height: 18%;
-    background-color: red;
+    background-color: rgb(142, 20, 20);
     top: 402px;
     left: 50%;
     transform: translate(-50%, -50%) rotate(180deg);
@@ -358,7 +381,7 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     height: 0;
     border-left: 3px solid transparent;
     border-right: 3px solid transparent;
-    border-bottom: 10px solid red;
+    border-bottom: 10px solid rgb(142, 20, 20);
     top: 451px;
     left: 50%;
     transform: translate(-50%, -50%) rotate(180deg);
@@ -426,10 +449,290 @@ background: linear-gradient(147deg, rgba(48, 33, 13, 1) 20%, rgba(66, 45, 12, 1)
     z-index: 6;
     box-shadow: 3.5px -1px 3.5px 1px #4343438f;
 }
-.visibile{
+.visibile-shift{
     visibility: visible!important;
     transition: 0.3s linear;
     font-size: 60px!important;
+    text-shadow: red 0 0 15px 3px!important;
 }
+.visibile-kmH{
+    visibility: visible!important;
+    transition: 0.3s linear;
+    /* font-size: 30px!important; */
+    text-shadow: #C0B995 0 0 15px 3px!important;
+}
+.scocca{
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    background-color: rgb(42, 42, 42);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.scocca .display-1,
+.scocca .display-2{
+    width: 350px;
+    height: 270px;
+    color: white;
+    text-align: center;
+    background-color: rgb(11, 13, 35);
+    border: #000000 2px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    position: relative;
+}
+.scocca .display-1{
+    left: 15px;
+}
+.scocca .display-2{
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url("./assets/sfondoDisplay.jpeg");
+    background-size: cover;
+    background-position: center -90px;
+}
+.scocca .display-1 p{
+    font-size: 25px;
+    font-weight: 100;
+    visibility: hidden;
+    position: absolute;
+    top: 55px;
+    border: 1px solid transparent;
+    border-top: 1.5px solid red;
+    width: 90%;
+    text-align: end;
+    padding-top: 7.5px;
+    padding-right: 20px;
+}
+.scocca .display-1 p::before{
+    content: 'SPEED';
+    position: absolute;
+    top: -35px;
+    left: 0px;
+}
+.scocca .display-1 h2{
+    margin-top: 85px;
+    font-size: 100px;
+    font-weight: 100;
+    visibility: hidden;
+    margin-bottom: 0%;
+    padding-right: 15px;
+}
+.scocca .display-2 .top{
+    height: 35px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+display: flex;
+justify-content: start;
+align-items: center;
+padding-left: 20px;
+    background-color: rgba(0, 0, 0, 0.347);
+
+}
+.scocca .display-2 .center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.539);
+}
+.scocca .display-2 .center img{
+    width: 25%;
+}
+.scocca .display-2 .top p{
+    margin: 0%;
+}
+
+.scocca .display-2 .center{
+    height: calc(100% - 110px);
+    width: 100%;
+}
+.scocca .display-1 .bottom,
+.scocca .display-2 .bottom{
+    height: 28px;
+    width: 100%;
+    background: #000000;
+background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(99, 99, 99, 1) 100%);
+    border-top: 1px solid red;
+    position: relative;
+}
+.scocca .display-1 .bottom{
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px; 
+}
+.bottom-sx{
+    height: 100%;
+    width: 35%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.scocca .display-2 .bottom::before{
+    content: '';
+    position: absolute;
+    left: 0%;
+    bottom: 37px;
+    height: 10px;
+    width: 55px;
+    background: #000000;
+   border-top-right-radius: 20px;
+background: rgba(99, 99, 99, 1);
+    border-top: 1px solid red;
+    border-right: 1px solid red;
+}
+.scocca .display-2 .bottom::after{
+    content: '';
+    position: absolute;
+    left: 55px;
+    bottom: 27.5px;
+    height: 10px;
+    width: 55px;
+    background: transparent;
+   border-bottom-left-radius: 20px;
+    border-bottom: 1px solid red;
+    border-left: 1px solid red;
+}
+.icons{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-top: 5px;
+}
+.icons ion-icon{
+    width: calc(100% / 6)!important;
+    font-size: 25px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 5px;
+    box-shadow:
+    0 0 10px rgba(0,0,0,0.6),   /* Ombra nera */
+    0 4.5px 5px -4px white;  
+    cursor: pointer;
+}
+.icons ion-icon:hover{
+    color: red;
+    border: none;
+    border-bottom: 1px solid red;
+    box-shadow:
+    0 0 10px rgba(0,0,0,0.6),   /* Ombra nera */
+    0 6.5px 5px -4px red;    
+    transition: 0.3s;
+}
+.shift-detail ion-icon{
+    font-size: 30px;
+    color: #c3531b;
+    position: absolute;
+    top: 65%;
+    left: 60%;
+    z-index: 1;
+    visibility: hidden;
+}
+.visible-simbol-down{
+    rotate: 90deg;
+    visibility: visible!important;
+    position: absolute;
+}
+.visible-simbol-up{
+    rotate: -90deg;
+    visibility: visible!important;
+    position: absolute;
+}
+
+.luminoso,
+.contagiri-interno .lineAll.luce-on::before{
+    border-bottom: 1.7px solid white!important;
+    border-left: 1.7px solid white!important;
+    transition: 0.4s!important;
+}
+.luminoso1,
+.container .scocca-contagiri .contagiri.miniLed::before,
+.container .scocca-contagiri .contagiri.miniLed::after{
+    color: white!important;
+    transition: 0.4s!important;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.749);
+}
+.bar.barraRossaLed::before{
+    border-right: 7px solid rgba(255, 0, 0, 0.749)!important;
+    transition: 0.4s!important;
+}
+.container-freccia.frecciaLed::before{
+    background-color: rgb(255, 24, 24)!important;
+    box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.749);
+    transition: 0.4s!important;
+}
+.container-freccia.frecciaLed::after{
+    border-bottom: 10px solid red!important;
+    transition: 0.4s!important;
+}
+.luminoso2,
+.container .scocca-contagiri.miniLed2::before{
+    color: red!important;
+    transition: 0.4s!important;
+    text-shadow: 0px 0px 4px rgba(255, 0, 0, 0.749);
+}
+.ledLogo{
+    opacity: 1!important;
+    filter: drop-shadow(0 0 1px white);
+    transition: 0.4s;
+}
+.tacchetteLuminose{
+    background-color: white!important;
+    box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.749);
+    transition: 0.4s!important;
+
+}
+.benzina{
+    width: 100%;
+    height: calc(100% - 35%);
+    display: flex;
+    flex-direction: column;
+}
+.tacche{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1px;
+}
+.taccha-benzina{
+    width: calc(100% / 9);
+    height: 100%;
+    border: 1px solid white;
+}
+.info-benzina{
+    display: flex;
+    justify-content: space-between;
+}
+.info-benzina a{
+    color: white;
+    font-size: 10px;
+}
+.bottom img{
+    height: 40px;
+}
+.fuelGas{
+    border: #c3531b 1px solid!important;
+    background-color: #c3531b;
+}
+
+
 
 

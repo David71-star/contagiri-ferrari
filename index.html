@@ -8,30 +8,74 @@
 </head>
 <body>
     <div class="container">
-        <h1>Ferrari 812 Superfast</h1>
-        <div class="scocca-contagiri">
-            <div class="bar"></div>
-            <div class="contagiri"></div>
-            <div class="contagiri-interno"></div>
-                <div class="container-interno-due">
-                    <img src="assets/IMG_3598.PNG" alt="ferrari-logo"/>
-                    <p><span>RPM</span><br/>x 1000</p>
+        <!-- <h1>Ferrari 812 Superfast</h1> -->
+        <div class="scocca">
+            <div class="display-1">
+                    <p id="speed">km/h</p>
+                    <h2></h2>
+                <div class="bottom">
+                    <div class="bottom-sx">
+                        <img src="/assets/logoBenzina.png" alt="logoBenzina" />
+                    <div class="benzina">
+                        <div class="tacche"></div>
+                        <div class="info-benzina">
+                            <a>0</a>
+                            <a>1/2</a>
+                            <a>1</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="kmAuto"></div>
                 </div>
-                <div class="shift-detail">
-                <h1 id="gear">N</h1>
-                <img id="shift" src="assets/img-shift.png" alt="shift-img"/>
+            </div>
+            <div class="cupola-interna">
+                <div class="scocca-contagiri">
+                    <div class="bar"></div>
+                    <div class="contagiri"></div>
+                    <div class="contagiri-interno"></div>
+                    <div class="container-interno-due">
+                        <img src="assets/IMG_3598.PNG" alt="ferrari-logo"/>
+                        <p id="text-giri"><span>RPM</span><br/>x 1000</p>
+                    </div>
+                    <div class="shift-detail">
+                        <h1 id="gear">
+                        </h1>
+                        <ion-icon id="imgShift" name="play-outline"></ion-icon>
+                        <img id="shift" src="assets/img-shift.png" alt="shift-img"/>
+                    </div>
+                    <div class="container-freccia">
+                         <div class="freccia"></div>
+                         <div class="freccia-cima"></div>
+                         <div class="separatore"></div>
+                    </div>                
                 </div>
-                <div class="container-freccia">
-                    <div class="freccia"></div>
-                    <div class="freccia-cima"></div>
-                    <div class="separatore"></div>
-                </div>                
+            </div>
+            <div class="display-2">  
+                <div class="top"></div>       
+                <div class="center">
+                    <img src="assets/Logo_Ferrari_Display.PNG" alt="logo" />
+                    <h2>SPEEDOMETER</h2>
+                    <div class="icons">
+                        <ion-icon name="speedometer"></ion-icon>
+                        <ion-icon name="radio"></ion-icon>
+                        <ion-icon name="musical-notes"></ion-icon>
+                        <ion-icon name="compass"></ion-icon>
+                        <ion-icon name="call"></ion-icon>
+                        <ion-icon name="cog"></ion-icon>
+                    </div>
+                </div>  
+                <div class="bottom">
+
+                </div>
+            </div>
         </div>
-        <h3>P : Accnedi e spegni il motore.</h3>
-        <h3>W : Accelera.</h3>
 
-
+        <!-- <h3>P : Accnedi e spegni il motore.</h3>
+        <h3>W : Accelera.</h3> -->
     </div>
+    
 </body>
+<script script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" > </script> 
+<script script  nomodule  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" > </script>
     <script src="index.js" defer></script>
 </html>
