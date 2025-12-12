@@ -200,10 +200,12 @@ document.addEventListener('keydown', (e) => {
       // setInterval(() => {
       attesa = true;
     // }, 500);
-      freccia.style.transition = 'transform 0.20s';
+      freccia.style.transition = 'transform 0.30s';
       rotazione = 25 + (speed / velocitaPerRapporto[currentShiftIndex]) * (rotazioneMassima - 25);
       // rotazione = (speed / velocitaPerRapporto[currentShiftIndex]) * (rotazioneMassima); // piccolo calo di giri
-      if ([0, 1].includes(currentShiftIndex)) rotazione = rotazioneMinima;
+    
+
+
       freccia.style.transform = `rotate(${rotazione}deg)`;
       shift.textContent = changeShift[currentShiftIndex];
       console.log('Marcia:', changeShift[currentShiftIndex]);
@@ -221,9 +223,10 @@ document.addEventListener('keydown', (e) => {
       rotazione = 25 + (speed / velocitaPerRapporto[currentShiftIndex]) * (rotazioneMassima - 25); // piccolo aumento di giri
       
       
-      if ([0, 1,].includes(currentShiftIndex)) rotazione = rotazioneMinima;
-      
-      freccia.style.transition = 'transform 0.20s';
+      if ([0, 1].includes(currentShiftIndex)) {
+        rotazione = rotazioneMinima;
+      };
+      freccia.style.transition = 'transform 0.30s';
       freccia.style.transform = `rotate(${rotazione}deg)`;
       shift.textContent = changeShift[currentShiftIndex];
       console.log('Marcia:', changeShift[currentShiftIndex]);
@@ -237,7 +240,7 @@ function gestisciArrowUp(e) {
   if (e.key.toLowerCase() === 'arrowup') {
     setTimeout(() => {
       attesa = false;
-    }, 200);
+    }, 300);
   }
 }
 
@@ -249,7 +252,7 @@ function gestisciArrowDown(e) {
   if (e.key.toLowerCase() === 'arrowdown') {
       setTimeout(() => {
       attesa = false;
-    }, 200);
+    }, 300);
   }
   }
 // Aggiungiamo l'event listener, chiamando la funzione
@@ -257,7 +260,6 @@ document.addEventListener('keyup', gestisciArrowDown);
 
 
 
- 
 
 // LOOP DINAMICO
 function aggiornaRotazione(timestamp) {
@@ -292,6 +294,14 @@ if (premutoS && currentShiftIndex >= 2) {
     if (rotazione < rotazioneMinima) rotazione = rotazioneMinima;
     aggiorna = true;
 }
+
+if (currentShiftIndex === 1 && !premutoW) {  // Se siamo in folle (marcia 'N')
+      if (speed > 0) {
+        speed -= 0.02; // Decelerazione graduale
+      kmH.textContent = Math.floor(speed);
+        if (speed <= 1) speed = 0; // Limita la velocità minima a 0
+      }
+    }
 
 
     
@@ -378,9 +388,7 @@ if (premutoS && currentShiftIndex >= 2) {
       simbolShift.classList.remove("visible-simbol-down")
     }
     speed = ((rotazione - 25) / (rotazioneMassima - 25)) * velocitaPerRapporto[8]; // 200-220 km/h
-    } else {
-    speed = 0;
-   }
+    }
 
       kmH.textContent = Math.floor(speed);
       
@@ -391,26 +399,27 @@ if (premutoS && currentShiftIndex >= 2) {
   if (rotazione > rotazioneMinima) {
       sound.play()
       sound.volume = 0.06;
-      fineAudio.pause()
+      fineAudio.pause()  
 
     }else{
       sound.pause()
-      fineAudio.play()
-      sound.currentTime = 0;
     }
+  
     if (rotazione >= rotazioneMassima) {
       scoppiettioAudio.play();
       scoppiettioAudio.volume = 0.07;
       sound.pause()
 
     }
-console.log(speed);
 
     }
   }
 
   animationFrameId = requestAnimationFrame(aggiornaRotazione);
 }
+
+
+
 
 function startAnimazione() {
   ultimaChiamata = null;
@@ -442,7 +451,7 @@ const tacchette = document.querySelectorAll(".bar span p")
 
 
 document.addEventListener('keydown', (e) => {
-  if (e.key.toLowerCase() === 'l') {
+  if (e.key.toLowerCase() === 'l' && motoreAcceso) {
 
     textlight.classList.toggle("luminoso1")
     textlight1.classList.toggle("luminoso1")
@@ -472,6 +481,8 @@ document.addEventListener('keydown', (e) => {
      for (let i = 9; i < 11; i++) {
       numberlight[i].classList.toggle("luminoso2");
     };
+  } else {
+    return;  
   }
 });
 
